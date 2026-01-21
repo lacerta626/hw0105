@@ -151,3 +151,26 @@ nextBtn.addEventListener('click', () => {
 
 // 초기 로드
 renderPage(0);
+// 모바일/데스크톱 모두 지원하는 클릭/터치 이벤트
+document.querySelectorAll('.draggable').forEach(img => {
+    img.addEventListener('click', function(e) {  // touchstart 대신 click 사용 (모바일에서도 동작)
+        e.preventDefault();
+        const src = img.src;
+        
+        // 캔버스 중앙에 추가 (또는 랜덤 위치)
+        fabric.Image.fromURL(src, function(oImg) {
+            oImg.set({
+                left: canvas.width / 2 - oImg.width * 0.25,
+                top: canvas.height / 2 - oImg.height * 0.25,
+                scaleX: 0.5,
+                scaleY: 0.5,
+                originX: 'center',
+                originY: 'center'
+            });
+            canvas.add(oImg);
+            canvas.setActiveObject(oImg);  // 바로 선택되게
+            canvas.renderAll();
+            saveCanvas();  // localStorage 저장도 호출
+        });
+    });
+});

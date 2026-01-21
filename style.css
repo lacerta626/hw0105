@@ -86,3 +86,28 @@ body {
 #canvas {
     margin-left: 240px;  /* 사이드바 너비 + 여백 */
 }
+@media (max-width: 768px) {
+    #sidebar {
+        position: relative;  /* fixed → relative로 변경 (스크롤 가능) */
+        left: 0;
+        width: 100%;
+        top: auto;
+        height: auto;
+        margin: 10px auto;
+        box-shadow: none;
+    }
+    
+    #canvas {
+        margin-left: 0;  /* 밀림 제거 */
+        width: 100% !important;  /* 화면 꽉 채우기 */
+        height: 60vh;  /* 높이 조정 */
+        border: 1px solid #000;
+    }
+    
+    .draggable {
+        width: 60px;
+        height: 60px;  /* 모바일에서 작게 */
+    }
+    
+    #toolbar { display: none; }  /* 툴바 숨기고 사이드바만 사용 */
+}
