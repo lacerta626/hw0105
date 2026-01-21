@@ -77,3 +77,77 @@ canvas.on('selection:updated', function() {
 canvas.on('selection:cleared', function() {
     deleteBtn.disabled = true;
 });
+
+// 모든 아이템 목록 (images/ 폴더 기준)
+const allItems = [
+    { src: 'images/sofa.png', name: '소파' },
+    { src: 'images/lamp.png', name: '램프' },
+    { src: 'images/plant.png', name: '식물' },
+    { src: 'images/chair.png', name: '의자' },
+    { src: 'images/table.png', name: '테이블' },
+    { src: 'images/bed.png', name: '침대' },
+    { src: 'images/clock.png', name: '시계' },
+    { src: 'images/picture.png', name: '그림' },
+    { src: 'images/rug.png', name: '러그' },
+    { src: 'images/shelf.png', name: '선반' },
+    // 여기에 20~30개 더 추가하세요...
+    // 예: { src: 'images/curtain.png', name: '커튼' },
+];
+
+const ITEMS_PER_PAGE = 10;
+let currentPage = 0;
+const totalPages = Math.ceil(allItems.length / ITEMS_PER_PAGE);
+
+const itemsContainer = document.getElementById('items-container');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageInfo = document.getElementById('pageInfo');
+
+// 페이지 렌더링 함수
+function renderPage(page) {
+    itemsContainer.innerHTML = ''; // 기존 내용 지우기
+    
+    const start = page * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    const pageItems = allItems.slice(start, end);
+    
+    pageItems.forEach(item => {
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = item.name;
+        img.className = 'draggable';
+        img.draggable = true;
+        img.width = 80;
+        img.height = 80;
+        
+        // 드래그 시작 시 src 저장 (기존 dragstart 이벤트 유지)
+        img.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', img.src);
+        });
+        
+        itemsContainer.appendChild(img);
+    });
+    
+    // 페이지 정보 업데이트
+    pageInfo.textContent = `${page + 1} / ${totalPages}`;
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page === totalPages - 1;
+}
+
+// 버튼 이벤트
+prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+        currentPage--;
+        renderPage(currentPage);
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages - 1) {
+        currentPage++;
+        renderPage(currentPage);
+    }
+});
+
+// 초기 로드
+renderPage(0);
