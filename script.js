@@ -60,13 +60,13 @@ const allItems = [
     { src: 'images/hyeon.png', name: '현' },
     { src: 'images/bear_purple.png', name: '곰인형' },
     { src: 'images/won.png', name: '원' },
-    { src: 'images/bookshelf_black.png', name: '의자' },
-    { src: 'images/rabbit_green.png', name: '테이블' },
-    { src: 'images/bed.png', name: '침대' },
-    { src: 'images/clock.png', name: '시계' },
-    { src: 'images/picture.png', name: '그림' },
-    { src: 'images/rug.png', name: '러그' },
-    { src: 'images/shelf.png', name: '선반' },
+    { src: 'images/rabbit_green.png', name: '토끼인형' },
+    { src: 'images/bookshelf_black.png', name: '책장' },
+    { src: 'images/fish_green.png', name: '초록낚시대' },
+    { src: 'images/fish_pink.png', name: '분홍낚시대' },
+    { src: 'images/fishcarpet_blue.png', name: '물고기카펫_파랑' },
+    { src: 'images/bench.png', name: '벤치' },
+    { src: 'images/fish.png', name: '파란낚시대' },
     // 추가 아이템...
 ];
 
