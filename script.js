@@ -80,9 +80,9 @@ canvas.on('selection:cleared', function() {
 
 // 모든 아이템 목록 (images/ 폴더 기준)
 const allItems = [
-    { src: 'images/sofa.png', name: '소파' },
+    { src: 'images/hyeon.png', name: '소파' },
     { src: 'images/lamp.png', name: '램프' },
-    { src: 'images/plant.png', name: '식물' },
+    { src: 'images/won.png', name: '식물' },
     { src: 'images/chair.png', name: '의자' },
     { src: 'images/table.png', name: '테이블' },
     { src: 'images/bed.png', name: '침대' },
