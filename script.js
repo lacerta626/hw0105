@@ -84,7 +84,7 @@ const allItems = [
     { src: 'images/lamp.png', name: '램프' },
     { src: 'images/won.png', name: '식물' },
     { src: 'images/bookshelf_black.png', name: '의자' },
-    { src: 'images/table.png', name: '테이블' },
+    { src: 'images/rabbit_green.png', name: '테이블' },
     { src: 'images/bed.png', name: '침대' },
     { src: 'images/clock.png', name: '시계' },
     { src: 'images/picture.png', name: '그림' },
