@@ -5,22 +5,22 @@ const canvas = new fabric.Canvas('canvas', {
     allowTouchScrolling: true
 });
 canvas.setBackgroundColor('#ebfcff', canvas.renderAll.bind(canvas));
-// 배경 이미지 로드 - 비율 유지하며 확대
-fabric.Image.fromURL('images/room-background.png', function (img) {
-    const scaleFactor = 1.3;  // 1.3배 확대 (원하시면 1.2, 1.4, 1.5 등으로 변경)
+// // 배경 이미지 로드 - 비율 유지하며 확대
+// fabric.Image.fromURL('images/room-background.png', function (img) {
+//     const scaleFactor = 1.3;  // 1.3배 확대 (원하시면 1.2, 1.4, 1.5 등으로 변경)
 
-    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-        // scaleX와 scaleY를 동일하게 설정 → 비율 유지
-        scaleX: scaleFactor,
-        scaleY: scaleFactor,
-        // 중앙 정렬 (필요 시)
-        originX: 'center',
-        originY: 'center',
-        left: canvas.width / 2,
-        top: canvas.height / 2,
-        crossOrigin: 'anonymous'
-    });
-});
+//     canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+//         // scaleX와 scaleY를 동일하게 설정 → 비율 유지
+//         scaleX: scaleFactor,
+//         scaleY: scaleFactor,
+//         // 중앙 정렬 (필요 시)
+//         originX: 'center',
+//         originY: 'center',
+//         left: canvas.width / 2,
+//         top: canvas.height / 2,
+//         crossOrigin: 'anonymous'
+//     });
+// });
 
 // PC 드래그 앤 드롭 (캔버스 영역) - 이벤트 선점 방지 추가
 canvas.wrapperEl.addEventListener('dragover', e => {
@@ -76,7 +76,17 @@ const allItems = [
     { src: 'images/fishcarpet_blue.png', name: '물고기카펫_파랑' },
     { src: 'images/bench.png', name: '벤치' },
     { src: 'images/fish.png', name: '파란낚시대' },
-    { src: 'images/fish_wall.png', name: '벽' },
+    { src: 'images/fish_wall.png', name: '히아신스벽' },
+    { src: 'images/fishfloor.png', name: '히아신스바닥' },
+
+    { src: 'images/cosmicfloor.png', name: '우주바닥' },
+    { src: 'images/cosmicwall_blue.png', name: '우주벽_파랑' },
+    { src: 'images/cosmicwall_purple.png', name: '우주벽_보라' },
+    { src: 'images/cosmicwall_green.png', name: '우주벽_초록' },
+    { src: 'images/basicfloor_black.png', name: '기본바닥_검정' },
+    { src: 'images/basicwall_black.png', name: '기본벽_검정' },
+
+
     // 추가 아이템...
 ];
 
