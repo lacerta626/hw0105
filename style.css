@@ -2,61 +2,70 @@ body {
     margin: 0;
     height: 100vh;
     font-family: Arial, sans-serif;
-    
-    /* 배경 이미지를 body에 넣음 */
-    background: url('images/main.jpg') no-repeat center center fixed;
-    background-size: cover;
-    
-    /* fallback */
-    background-color: #e4ebf5;
-    
-    position: relative;          /* z-index 기준점 */
-}
 
-.main-container {
-    height: 100vh;
+    /* 전체 배경: 그라데이션 */
+    background: linear-gradient(
+        to bottom,
+        #6a5acd,
+        #3cb371
+    );
+
     display: flex;
     justify-content: center;
     align-items: center;
+}
+h1{
+    font-size: 150px;
+    margin-bottom: 20px;
+    font-family: Pretendard-Bold;
+    
+}
+.purple {
+    color: #6a5acd; /* 보라 */
+}
+
+.green {
+    color: #3cb371; /* 초록 */
+}
+/* 기준 박스 */
+.main-container {
     position: relative;
-    z-index: 10;                 /* 배경(기본 z=0)보다 위로 */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main-container::before {
-    content: "";
+/* 배경 이미지 (가운데, 원본 크기 유지) */
+.bg-image {
     position: absolute;
-    inset: 0;
-   
-    z-index: 1;                        /* 배경 바로 위, 콘텐츠 아래 */
-    pointer-events: none;              /* 클릭 이벤트 통과시키기 ★ 핵심 */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: none;     /* 원본 크기 */
+    z-index: 1;
+    pointer-events: none;
 }
 
+/* 버튼 & 텍스트 */
 .hello-content {
     position: relative;
-    z-index: 2;                        /* 오버레이 위 */
+    z-index: 2;
     text-align: center;
     color: white;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    padding: 40px;
-    max-width: 90%;
-    pointer-events: auto;              /* 여기서 클릭 가능 */
 }
 
-/* 버튼이 확실히 클릭되게 */
+/* 버튼 스타일 */
 .menu button {
-    position: relative;
-    z-index: 3;                        /* 필요하면 더 높게 */
-    pointer-events: auto !important;
-    /* 나머지 기존 스타일 유지 */
-}
-
-/* 만약 배경 이미지를 별도 img 태그로 넣었다면 */
-.hello-image {  /* ← 만약 <img class="hero-image"> 썼다면 */
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;                        /* 가장 뒤로 */
-    pointer-events: none;              /* 클릭 통과 ★ 핵심 */
+    background: rgba(216, 112, 247, 0.6);
+    color: rgb(255, 255, 255);
+    border: rgb(161, 151, 151);
+    padding: 50px 70px;
+    margin: 10px;
+    font-size: 35px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: Pretendard-bold    ;
+    
 }
