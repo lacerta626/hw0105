@@ -5,15 +5,14 @@
     <title>홈페이지</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <div class="background"></div>
 
 <div class="main-container">
-    <img src="images/main.jpg" class="bg-image">
+    <img src="images/main_pink.jpg" class="bg-image">
     <div class="hello-content">
-        <h1>
-  <span class="purple">HYEON</span><span class="green">WON</span>
-</h1>
+        
         <div class="menu">
             <button onclick="location.href='room/room.html'">
                 Charater Room
@@ -22,8 +21,29 @@
                 TRPG
             </button>
         </div>
-    </div>
+        <div class="click-area">
+    <button id="clickBtn">CLICK</button>
 </div>
 
+<img id="popupImage" src="images/love_pink.png">
+    </div>
+    
+</div>
+
+  
+
+<script>
+document.getElementById("clickBtn").addEventListener("click", function () {
+    const img = document.getElementById("popupImage");
+
+    img.classList.toggle("show");
+});
+/* ESC 키로 닫기 */
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        popupImage.classList.remove("show");
+    }
+});
+</script>
 </body>
 </html>
