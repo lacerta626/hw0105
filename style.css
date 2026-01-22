@@ -74,20 +74,16 @@ h1{
 
     /* 제목 크기 줄이기 */
     h1 {
-        font-size: 64px;
+        font-size: 32px;
         margin-bottom: 16px;
     }
 
-    /* 배경 이미지가 화면 안에 들어오게 */
-    .bg-image {
-        max-width: 90%;
-        max-height: 90%;
-    }
+ 
 
     /* 버튼 크기 줄이기 */
     .menu button {
         padding: 20px 28px;
-        font-size: 18px;
+        font-size: 10px;
         border-radius: 24px;
         width: 80%;              /* 모바일에서 버튼 정렬 안정 */
         max-width: 320px;
