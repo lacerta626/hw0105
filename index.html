@@ -15,7 +15,7 @@
     <!-- HOME 클릭 영역 (이미지 기준) -->
     <a href="home/home.html" class="home-hitbox"></a>
   </div>
-
+   <div id="dday" class="dday-text"></div>
   <!-- 중앙 하단 CLICK 버튼 -->
   <div class="click-area">
     <button id="clickBtn">CLICK</button>
@@ -39,6 +39,17 @@ document.addEventListener("keydown", (e) => {
         popupImage.classList.remove("show");
     }
 });
+// ❤️ 사귄 날짜 (YYYY-MM-DD)
+  const startDate = new Date("2026-01-05");
+  const today = new Date();
+
+  // 날짜 차이 계산
+  const diffTime = today - startDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  const dday = document.getElementById("dday");
+
+  dday.textContent = `DAY ${diffDays}`;
 </script>
 
 </body>
