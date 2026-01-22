@@ -2,48 +2,44 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>홈페이지</title>
+    <title>Main</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<div class="background"></div>
 
 <div class="main-container">
+<div class="image-wrapper">
     <img src="images/main_pink.jpg" class="bg-image">
-    <div class="hello-content">
-        
-        <div class="menu">
-            <button onclick="location.href='room/room.html'">
-                Charater Room
-            </button>
-            <button onclick="location.href='trpg/trpg.html'">
-                TRPG
-            </button>
-        </div>
-        <div class="click-area">
+
+    <!-- HOME 클릭 영역 (이미지 기준) -->
+    <a href="home/home.html" class="home-hitbox"></a>
+  </div>
+
+  <!-- 중앙 하단 CLICK 버튼 -->
+  <div class="click-area">
     <button id="clickBtn">CLICK</button>
-</div>
+  </div>
 
-<img id="popupImage" src="images/love_pink.png">
-    </div>
-    
-</div>
+    <!-- 팝업 이미지 -->
+    <img id="popupImage" src="images/love_pink.png">
 
-  
+</div>
 
 <script>
-document.getElementById("clickBtn").addEventListener("click", function () {
-    const img = document.getElementById("popupImage");
+const clickBtn = document.getElementById("clickBtn");
+const popupImage = document.getElementById("popupImage");
 
-    img.classList.toggle("show");
+clickBtn.addEventListener("click", () => {
+    popupImage.classList.toggle("show");
 });
-/* ESC 키로 닫기 */
-document.addEventListener("keydown", function (e) {
+
+document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         popupImage.classList.remove("show");
     }
 });
 </script>
+
 </body>
 </html>

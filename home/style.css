@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  background-color: rgb(255, 209, 217);
+}
+
+/* 기준 컨테이너 */
+.page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../images/home.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 배경 이미지 */
+.bg-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* 버튼 그룹 */
+.menu {
+  position: absolute;
+  bottom: 18%;
+  display: flex;
+  gap: 24px;
+  z-index: 3;
+}
+
+/* 버튼 스타일 (분홍 + 흰 글자) */
+.menu button {
+  padding: 16px 38px;
+  border-radius: 40px;
+  border: none;
+
+  background-color: #ff9fcf;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(255, 159, 207, 0.45);
+  transition: transform 0.s ease, box-shadow 0.2s ease;
+}
+
+/* hover */
+.menu button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(255, 159, 207, 0.6);
+}
+
+/* click */
+.menu button:active {
+  transform: scale(0.96);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    bottom: 14%;
+  }
+
+  .menu button {
+    width: 240px;
+  }
+}
