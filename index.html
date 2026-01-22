@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
-    <title>룸 데코 홈페이지</title>
+    <title>홈페이지</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/fabric.min.js"></script>
 </head>
-
 <body>
-    <button onclick="location.href='trpg/trpg.html'">TRPG</button>
-    <div id="sidebar">
-        <h3 style="margin-top: 0; text-align: center;">아이템 선택하기</h3>
-        <div id="items-container">
-            <!-- JavaScript로 동적으로 생성될 부분 -->
+
+<div class="main-container">
+    <div class="hello-content">
+        <h1>환영합니다</h1>
+        <div class="menu">
+            <button onclick="location.href='room/room.html'">
+                🛋️ 캐릭터 방 꾸미기
+            </button>
+            <button onclick="location.href='trpg/trpg.html'">
+                🎲 TRPG
+            </button>
         </div>
-
-        <div class="pagination">
-            <button id="prevBtn">◀ 이전</button>
-            <span id="pageInfo">1 / 3</span>
-            <button id="nextBtn">다음 ▶</button>
-        </div>
     </div>
-    <div id="controls" style="margin: 15px;">
-        <button id="deleteBtn" disabled>선택한 아이템 삭제 🗑️</button>
-    </div>
+</div>
 
-    <div id="canvas-wrapper">
-        <canvas id="canvas" width="900" height="600"></canvas>
-    </div>
-
-    <script src="fabric.min.js"></script> <!-- Fabric.js 라이브러리 -->
-    <script src="script.js"></script>
 </body>
-
 </html>

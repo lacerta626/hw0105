@@ -1,168 +1,62 @@
 body {
+    margin: 0;
+    height: 100vh;
     font-family: Arial, sans-serif;
-    text-align: center;
+    
+    /* 배경 이미지를 body에 넣음 */
+    background: url('images/main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    
+    /* fallback */
+    background-color: #e4ebf5;
+    
+    position: relative;          /* z-index 기준점 */
 }
 
-#toolbar {
-    margin: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
+.main-container {
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;                 /* 배경(기본 z=0)보다 위로 */
 }
 
-/* 사이드바 */
-#sidebar {
-    position: fixed;
-    left: 20px;
-    top: 80px;
-    width: 300px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    height: 80vh;
-    overflow-y: auto;
-    pointer-events: auto;
-    touch-action: manipulation;
-    z-index: 1000 !important;
+.main-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+   
+    z-index: 1;                        /* 배경 바로 위, 콘텐츠 아래 */
+    pointer-events: none;              /* 클릭 이벤트 통과시키기 ★ 핵심 */
 }
 
-/* 아이템 컨테이너 */
-#items-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    pointer-events: auto !important;
-}
-
-/* wrapper div는 이벤트 무시 → img로 전달 */
-#items-container > div {
-    flex: 0 0 45%;
-    max-width: 120px;
-    box-sizing: border-box;
+.hello-content {
+    position: relative;
+    z-index: 2;                        /* 오버레이 위 */
     text-align: center;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    padding: 40px;
+    max-width: 90%;
+    pointer-events: auto;              /* 여기서 클릭 가능 */
 }
 
-/* #items-container > div > img {
-    pointer-events: auto;                
-} */
-
-/* 실제 드래그 대상인 img에만 이벤트 허용 + 강제 grab */
-.draggable {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    cursor: grab !important;
-    -webkit-user-drag: element !important;
-    user-select: none !important;
+/* 버튼이 확실히 클릭되게 */
+.menu button {
+    position: relative;
+    z-index: 3;                        /* 필요하면 더 높게 */
     pointer-events: auto !important;
-    touch-action: manipulation !important;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    background: #f9f9f9;
-    padding: 5px;
-    transition: transform 0.2s;
+    /* 나머지 기존 스타일 유지 */
 }
 
-/* 드래그 중 상태 */
-.draggable:active,
-.draggable.dragging {
-    cursor: grabbing !important;
-}
-.pagination {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.pagination button {
-    padding: 6px 12px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    background: #f0f0f0;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#pageInfo {
-    font-weight: bold;
-    margin: 0 10px;
-}
-
-#canvas-wrapper {
-    margin-left: 380px;          /* 300px + 여유 80px → 추천! */
-    padding: 30px 20px 20px 0;   /* 위 30px, 오른쪽 20px 여백 추가 */
-    box-sizing: border-box;
-}
-
-#canvas {
-    margin-left: 0 !important;   /* wrapper가 여백을 맡음 */
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 살짝 그림자 추가로 더 입체감 */
-}
-/* 모바일 반응형 */
-@media (max-width: 768px) {
-    #sidebar {
-        position: relative;
-        left: 0;
-        width: 100%;
-        top: auto;
-        height: auto;
-        margin: 10px auto;
-        box-shadow: none;
-        overflow-y: visible;             /* 모바일에서는 스크롤 문제 피하기 */
-    }
-    
-    #canvas {
-        margin-left: 0;
-        width: 100% !important;
-        height: 60vh;
-    }
-    
-    .draggable {
-        width: 60px;
-        height: 60px;
-    }
-    
-    #items-container > div {
-        flex: 0 0 80%;
-        max-width: none;
-    }
-}
-#deleteBtn {
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #000000;                /* 글자색 검정 */
-    background-color: #ffffff;     /* 흰색 배경 */
-    border: 1px solid #d0d0d0;     /* 얇은 테두리 */
-    border-radius: 12px;           /* 약간 둥근 사각형 (12px 추천) */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);  /* 부드러운 그림자 */
-    cursor: pointer;
-    transition: all 0.2s ease;     /* 부드러운 전환 효과 */
-}
-
-#deleteBtn:hover:not(:disabled) {
-    background-color: #000000;     /* hover 시 검정 배경 */
-    color: #ffffff;                /* 글자 흰색 */
-    border-color: #000000;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);  /* hover 시 그림자 강화 */
-    transform: translateY(-1px);   /* 살짝 위로 떠오르는 느낌 (선택) */
-}
-
-#deleteBtn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: none;
+/* 만약 배경 이미지를 별도 img 태그로 넣었다면 */
+.hello-image {  /* ← 만약 <img class="hero-image"> 썼다면 */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;                        /* 가장 뒤로 */
+    pointer-events: none;              /* 클릭 통과 ★ 핵심 */
 }
