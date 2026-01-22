@@ -69,3 +69,41 @@ h1{
     font-family: Pretendard-bold    ;
     
 }
+@media (max-width: 768px) {
+
+    /* 제목 크기 줄이기 */
+    h1 {
+        font-size: 64px;
+        margin-bottom: 16px;
+    }
+
+    /* 배경 이미지가 화면 안에 들어오게 */
+    .bg-image {
+        max-width: 90%;
+        max-height: 90%;
+    }
+
+    /* 버튼 크기 줄이기 */
+    .menu button {
+        padding: 20px 28px;
+        font-size: 18px;
+        border-radius: 24px;
+        width: 80%;              /* 모바일에서 버튼 정렬 안정 */
+        max-width: 320px;
+    }
+
+    /* 버튼 세로 정렬 */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menu button:active {
+    transform: scale(0.96);
+}
+@media (max-width: 768px) {
+    .hello-content {
+        text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+}
+}
