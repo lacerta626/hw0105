@@ -63,7 +63,7 @@ canvas.wrapperEl.addEventListener('drop', e => {
         if (typeof saveCanvas === 'function') saveCanvas();
     }, { crossOrigin: 'anonymous' });
 });
-
+const BASE = '/hw0105';
 // 아이템 목록
 const allItems = [
     { src: '${BASE}/images/room/hyeon.png', name: '현' },
