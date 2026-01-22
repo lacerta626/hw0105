@@ -66,30 +66,25 @@ canvas.wrapperEl.addEventListener('drop', e => {
 
 // 아이템 목록
 const allItems = [
-    { src: '../../images/room/hyeon.png', name: '현' },
-    { src: '../../images/room/bear_purple.png', name: '곰인형' },
-    { src: '../../images/room/won.png', name: '원' },
-    { src: '../../images/room/rabbit_green.png', name: '토끼인형' },
-    { src: '../../images/room/bookshelf_black.png', name: '책장' },
-    { src: '../../images/room/fish_green.png', name: '초록낚시대' },
-    { src: '../../images/room/fish_pink.png', name: '분홍낚시대' },
-    { src: '../../images/room/fishcarpet_blue.png', name: '물고기카펫_파랑' },
-    { src: '../../images/room/bench.png', name: '벤치' },
-    { src: '../../images/room/fish.png', name: '파란낚시대' },
-    { src: '../../images/room/fish_wall.png', name: '히아신스벽' },
-    { src: '../../images/room/fishfloor.png', name: '히아신스바닥' },
-
-    { src: '../../images/room/cosmicfloor.png', name: '우주바닥' },
-    { src: '../../images/room/cosmicwall_blue.png', name: '우주벽_파랑' },
-    { src: '../../images/room/cosmicwall_purple.png', name: '우주벽_보라' },
-    { src: '../../images/room/cosmicwall_green.png', name: '우주벽_초록' },
-    { src: '../../images/room/basicfloor_black.png', name: '기본바닥_검정' },
-    { src: '../../images/room/basicwall_black.png', name: '기본벽_검정' },
-
-
-    // 추가 아이템...
+    { src: '/hw0105/images/room/hyeon.png', name: '현' },
+    { src: '/hw0105/images/room/bear_purple.png', name: '곰인형' },
+    { src: '/hw0105/images/room/won.png', name: '원' },
+    { src: '/hw0105/images/room/rabbit_green.png', name: '토끼인형' },
+    { src: '/hw0105/images/room/bookshelf_black.png', name: '책장' },
+    { src: '/hw0105/images/room/fish_green.png', name: '초록낚시대' },
+    { src: '/hw0105/images/room/fish_pink.png', name: '분홍낚시대' },
+    { src: '/hw0105/images/room/fishcarpet_blue.png', name: '물고기카펫_파랑' },
+    { src: '/hw0105/images/room/bench.png', name: '벤치' },
+    { src: '/hw0105/images/room/fish.png', name: '파란낚시대' },
+    { src: '/hw0105/images/room/fish_wall.png', name: '히아신스벽' },
+    { src: '/hw0105/images/room/fishfloor.png', name: '히아신스바닥' },
+    { src: '/hw0105/images/room/cosmicfloor.png', name: '우주바닥' },
+    { src: '/hw0105/images/room/cosmicwall_blue.png', name: '우주벽_파랑' },
+    { src: '/hw0105/images/room/cosmicwall_purple.png', name: '우주벽_보라' },
+    { src: '/hw0105/images/room/cosmicwall_green.png', name: '우주벽_초록' },
+    { src: '/hw0105/images/room/basicfloor_black.png', name: '기본바닥_검정' },
+    { src: '/hw0105/images/room/basicwall_black.png', name: '기본벽_검정' },
 ];
-
 const ITEMS_PER_PAGE = 10;
 let currentPage = 0;
 const totalPages = Math.ceil(allItems.length / ITEMS_PER_PAGE);
