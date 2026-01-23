@@ -1,19 +1,46 @@
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* 가장 뒤로 보내기 */
+    object-fit: cover; /* 영상이 화면에 꽉 차도록 설정 */
+    /* background-color: rgb(255, 209, 217); 영상이 로드되기 전 보일 배경색 */
+}
 body {
     margin: 0;
     height: 100vh;
     font-family: Arial, sans-serif;
-background-color: rgb(255, 209, 217);
+    /* background-color 제거 */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* 배경 영상 때문에 스크롤이 생기지 않도록 방지 */
+}
+/* 전체 컨테이너: 화면 꽉 차게 설정 */
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;     /* 세로 중앙 정렬 */
+    padding: 0;             /* 패딩 제거 (이미지가 꽉 차도록) */
+    background: transparent;
 }
 .image-wrapper {
-  position: relative;
-  max-width: 100%;
-  max-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    padding: 100px 100px; /* 이미지 주변 여백 */
+    position: relative;
+    width: 100%;           /* 기본적으로 부모 너비를 따라감 */
+    min-width: 430px;      /* ⭐ 최소 너비 430px 고정 */
+    max-width: 1296px;     /* ⭐ 최대 너비 1296px 고정 */
+    height: 100%;          /* 높이는 화면에 맞춤 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .home-hitbox {
   position: absolute;
@@ -84,26 +111,14 @@ h1{
 .green {
     color: #3cb371; /* 초록 */
 }
-/* 기준 박스 */
-.main-container {
-    position: relative;
+
+.bg-image {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
-
-/* 배경 이미지 (가운데, 원본 크기 유지) */
-.bg-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
-
-  z-index: 1;
-  pointer-events: none;
+    object-fit: contain;   /* 이미지 비율을 유지하며 영역 안에 맞춤 */
+    display: block;
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* 버튼 & 텍스트 */

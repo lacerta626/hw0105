@@ -4,11 +4,16 @@ const TRPG_LOCKS = {
         password: '0105'
     },
     love: {
-        locked: false
-    },
-    secret_campaign: {
         locked: true,
-        password: 'keeper'
+        password: '0105'
+    },
+    open: {
+        locked: true,
+        password: '0105'
+    },
+    highbuilding: {
+        locked: true,
+        password: '0105'
     }
 };
 
