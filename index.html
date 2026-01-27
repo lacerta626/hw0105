@@ -12,9 +12,24 @@
 <video autoplay muted loop playsinline id="bg-video">
     <source src="images/back2.mp4" type="video/mp4">
 </video>
+<div id="loading-screen">
+    <div class="loader-content">
+        <div class="image-track">
+            <img src="images/Hw_11.png" alt="loading1" class="loader-img img-up">
+            <img src="images/Hw_22.png" alt="loading2" class="loader-img img-down">
+        </div>
+        <div class="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+    </div>
+</div>
+
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="images/back2.mp4" type="video/mp4">
+</video>
 <div class="main-container">
 <div class="image-wrapper">
-    <img src="images/main_pink.jpg" class="bg-image">
+    <img src="images/Hww_11.png" class="bg-image">
 
     <!-- HOME 클릭 영역 (이미지 기준) -->
     <a href="home/home.html" class="home-hitbox"></a>
@@ -54,6 +69,27 @@ document.addEventListener("keydown", (e) => {
   const dday = document.getElementById("dday");
 
   dday.textContent = `DAY ${diffDays}`;
+  window.addEventListener('load', () => {
+    const loadingBar = document.getElementById('loading-bar');
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // 로딩바 진행 시뮬레이션 (실제 리소스 로드와 연동 가능)
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+            
+            // 약간의 지연 후 로딩창 제거
+            setTimeout(() => {
+                loadingScreen.classList.add('finished');
+            }, 500);
+        } else {
+            width += Math.random() * 15; // 랜덤하게 속도 조절
+            if (width > 100) width = 100;
+            loadingBar.style.width = width + '%';
+        }
+    }, 150);
+});
 </script>
 
 </body>
