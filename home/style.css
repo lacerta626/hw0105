@@ -65,7 +65,48 @@ body {
 .menu button:active {
   transform: scale(0.96);
 }
+/* home 화면용 팝업 및 버튼 스타일 */
+.click-area {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
 
+#clickBtn {
+    padding: 14px 36px;
+    border-radius: 40px;
+    border: none;
+    background-color: #ff9fcf;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255, 159, 207, 0.4);
+    transition: all 0.2s ease;
+}
+
+#popupImage {
+    position: fixed; /* home 화면 전체 기준 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    max-width: 80vw;
+    max-height: 80vh;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 200;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    border-radius: 24px;
+}
+
+#popupImage.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
 /* 모바일 대응 */
 @media (max-width: 768px) {
   .menu {

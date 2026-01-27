@@ -35,7 +35,6 @@
             <img src="images/Hw_22.png" class="character-img" id="char-2">
         </div>
 
-        <a href="home/home.html" class="home-hitbox"></a>
     </div>
 
     <div id="dday" class="dday-text"></div>
@@ -44,24 +43,27 @@
         <button id="clickBtn">CLICK</button>
     </div>
 
+<div class="click-area">
+    <div id="btn-guide-bubble" class="dialogue-bubble guide">우리가 궁금하면 이 버튼을 눌러봐!</div>
+    <button id="clickBtn">CLICK</button>
+</div>
+
+
     <img id="popupImage" src="images/love_pink.png">
 </div>
 
 <script>
     const clickBtn = document.getElementById("clickBtn");
-    const popupImage = document.getElementById("popupImage");
+
     const dday = document.getElementById("dday");
     const loadingBar = document.getElementById('loading-bar');
     const loadingScreen = document.getElementById('loading-screen');
 
-    // 1. 팝업 이미지 제어
-    clickBtn.addEventListener("click", () => {
-        popupImage.classList.toggle("show");
-    });
-
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") popupImage.classList.remove("show");
-    });
+    // CLICK 버튼 누르면 home/home.html로 이동
+clickBtn.addEventListener("click", () => {
+    // 이동하기 전 살짝 클릭 효과를 주거나 바로 이동합니다.
+    window.location.href = "home/home.html";
+});
 
     // 2. 디데이 계산
     const startDate = new Date("2026-01-05");
@@ -134,6 +136,39 @@
     document.getElementById("char-2").addEventListener("click", () => {
         timer2 = showMessage("bubble-2", scripts2, timer2);
     });
+    window.addEventListener('load', () => {
+    // 1. 로딩 바 로직 (기존 코드)
+    let width = 0;
+    const interval = setInterval(() => {
+        if (width >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                loadingScreen.classList.add('finished');
+                
+                // 캐릭터 초기 대사창 (기존 코드)
+                const b1 = document.getElementById("bubble-1");
+                const b2 = document.getElementById("bubble-2");
+                b1.classList.add("show");
+                b2.classList.add("show");
+                setTimeout(() => {
+                    b1.classList.remove("show");
+                    b2.classList.remove("show");
+                }, 5000);
+
+                // --- 추가된 기능: 10초 뒤 버튼 안내창 띄우기 ---
+                setTimeout(() => {
+                    const guideBubble = document.getElementById("btn-guide-bubble");
+                    guideBubble.classList.add("show");
+                }, 6000); // 로딩 종료 후 10초 뒤 (합계 약 11~12초)
+
+            }, 500);
+        } else {
+            width += Math.random() * 15;
+            if (width > 100) width = 100;
+            loadingBar.style.width = width + '%';
+        }
+    }, 150);
+});
 </script>
 
 </body>

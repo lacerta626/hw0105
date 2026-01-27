@@ -25,6 +25,25 @@
   </div>
 
 </div>
+<div class="click-area">
+    <button id="clickBtn">CLICK</button>
+</div>
 
+<img id="popupImage" src="../images/love_pink.png">
+
+<script>
+    const clickBtn = document.getElementById("clickBtn");
+    const popupImage = document.getElementById("popupImage");
+
+    clickBtn.addEventListener("click", () => {
+        popupImage.classList.toggle("show");
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            popupImage.classList.remove("show");
+        }
+    });
+</script>
 </body>
 </html>

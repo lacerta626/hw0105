@@ -178,12 +178,54 @@ body {
 
 #popupImage.show { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
 
-.click-area { position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%); z-index: 3; }
+.click-area { position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%); z-index: 3;/* 자식 요소(말풍선, 버튼)를 세로로 나열하고 가로 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
+/* --- CLICK 버튼 스타일 수정 --- */
 #clickBtn {
-    padding: 14px 36px; border-radius: 40px; border: none;
-    background-color: #ff9fcf; color: #fff; font-size: 15px; font-weight: 700;
-    cursor: pointer; box-shadow: 0 6px 15px rgba(255, 159, 207, 0.4);
-    transition: all 0.2s ease;
+    padding: 14px 36px;
+    border-radius: 40px;
+    
+    /* 1. 기본 상태: 투명 테두리를 미리 설정해서 호버 시 크기가 변하지 않게 함 */
+    border: 2px solid transparent;
+    
+    background-color: #ff9fcf; /* 기본 분홍색 */
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    
+    /* 2. 기본 그림자 */
+    box-shadow: 0 6px 15px rgba(255, 159, 207, 0.4);
+    
+    /* 3. 부드러운 전환 속도 설정 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    outline: none;
+}
+
+/* 🫧 마우스를 올렸을 때 (Hover) */
+#clickBtn:hover {
+    /* 4. 위로 살짝 올라오는 느낌 */
+    transform: translateY(-6px);
+    
+    /* 5. 겉 테두리에 찐한 분홍색 생성 */
+    border-color: #ff4da6; 
+    
+    /* 6. 배경색을 아주 살짝 밝게 (선택 사항) */
+    background-color: #ffb3d9;
+
+    /* 7. 그림자 강화 (더 깊고 넓게) */
+    box-shadow: 0 12px 25px rgba(255, 77, 166, 0.5);
+}
+
+/* 🖱️ 클릭했을 때 (Active) */
+#clickBtn:active {
+    /* 눌리는 느낌을 위해 다시 살짝 내려감 */
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 5px 10px rgba(255, 77, 166, 0.4);
+    transition: 0.1s;
 }
 
 /* --- 로딩 화면 --- */
@@ -202,10 +244,98 @@ body {
 .loading-bar-container { width: 300px; height: 4px; background: #333; border-radius: 2px; overflow: hidden; }
 #loading-bar { width: 0%; height: 100%; background: #ff9fcf; transition: width 0.3s; }
 
-/* --- 모바일 대응 --- */
+/* 버튼 위 안내 말풍선 전용 스타일 */
+.dialogue-bubble.guide {
+    top: -70px;          /* 버튼 위쪽 위치 */
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ff9fcf; /* 버튼색과 맞춘 분홍색 테두리 */
+    color: #ff4da6;      /* 진한 분홍색 글씨 */
+    font-size: 14px;
+    padding: 10px 18px;
+    cursor: default;     /* 클릭 불가 표시 */
+}
+
+/* 안내 말풍선 꼬리 색상 변경 */
+.dialogue-bubble.guide::after {
+    border-color: rgba(255, 255, 255, 0.95) transparent transparent;
+}
+
+/* 모바일 대응 (아이폰 14 Pro 등) */
 @media (max-width: 768px) {
-    .image-wrapper { gap: 20px; flex-direction: row; align-items: flex-end; }
-    .character-img { height: 45vh; }
-    .dialogue-bubble { font-size: 14px; padding: 10px 15px; top: -60px; }
-    .dday-text { font-size: 18px; }
+    .dialogue-bubble.guide {
+        top: -60px;
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+}
+
+/* --- 모바일 및 아이폰 14 Pro 대응 (최적화) --- */
+@media (max-width: 768px) {
+    /* 1. 전체 컨테이너 여백 조정 */
+    .image-wrapper {
+        gap: 10px;           /* 캐릭터 사이 간격 축소 */
+        padding-bottom: 80px; /* 하단 버튼과의 간격 확보 */
+        width: 95%;          /* 양옆이 잘리지 않도록 너비 제한 */
+        max-width: 430px;    /* 아이폰 14 Pro 너비 기준 고정 */
+        align-items: flex-end;
+    }
+
+    /* 2. 캐릭터 이미지 크기 최적화 */
+    .character-img {
+        height: auto;        /* 높이 고정 해제 */
+        width: 45vw;         /* 화면 너비의 절반 정도로 설정 */
+        max-width: 180px;    /* 너무 커지지 않게 제한 */
+        object-fit: contain;
+    }
+
+    /* 3. 대사창(말풍선) 크기 및 위치 조정 */
+    .dialogue-bubble {
+        font-size: 13px;     /* 폰트 크기 축소 */
+        padding: 8px 15px;   /* 패딩 축소 */
+        top: -50px;          /* 캐릭터 머리 위로 더 가깝게 */
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .dialogue-bubble::after {
+        border-width: 6px 6px 0; /* 말풍선 꼬리 크기 축소 */
+        bottom: -6px;
+    }
+
+    /* 4. 디데이 텍스트 위치 및 크기 */
+    .dday-text {
+        font-size: 20px;     /* 모바일에서 적당한 크기 */
+        top: 15%;            /* 상단 다이내믹 아일랜드 고려하여 약간 내림 */
+        padding: 8px 20px;
+    }
+
+    /* 5. 클릭 버튼 크기 조정 */
+    #clickBtn {
+        padding: 10px 24px;
+        font-size: 13px;
+    }
+
+    /* 6. 홈 히트박스 위치 조정 */
+    .home-hitbox {
+        width: 70px;
+        height: 35px;
+        top: 15%;
+        left: 5%;
+    }
+
+    /* 7. 로딩 화면 이미지 크기 */
+    .loader-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* 초소형 기기(아이폰 SE 등)를 위한 추가 보정 */
+@media (max-width: 375px) {
+    .image-wrapper {
+        gap: 5px;
+    }
+    .character-img {
+        max-width: 150px;
+    }
 }
