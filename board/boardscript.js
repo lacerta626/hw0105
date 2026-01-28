@@ -63,6 +63,7 @@ function navigateWithTransition(url) {
 // 버튼 연결
 document.getElementById("go-trpg")?.addEventListener("click", () => navigateWithTransition("../trpg/trpg.html"));
 document.getElementById("go-room")?.addEventListener("click", () => navigateWithTransition("../decoroom/decoroom.html"));
+document.getElementById("go-story")?.addEventListener("click", () => navigateWithTransition("../story/story.html"));
 
 // 온도 조절기 로직
 const slider = document.querySelector('.temp-slider');

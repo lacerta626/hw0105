@@ -46,6 +46,7 @@ body::before {
 }
 
 .logo { font-size: 30px; text-align: center; margin-bottom: 20px; }
+.logo img{width: 100%}
 
 .nav-item {
     color: var(--win-accent);

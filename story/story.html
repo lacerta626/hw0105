@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story</title>
+    <link rel="stylesheet" href="storystyle.css">
+       <script src="storyscript.js" defer></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+</head>
+<body>
+    <div id="transition-layer">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+    <div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="logo">WON</div>
+        <div class="nav-item" onclick="location.href='index.html'">DASHBOARD</div>
+        <div class="nav-item active">STORY</div>
+    </aside>
+
+    <main class="main-content">
+        <header class="welcome-card">
+            <h1>STORY.log</h1>
+            <p>보라빛 격자 너머의 이야기들</p>
+        </header>
+
+        <div class="timeline">
+            <article class="card tweet-item" onclick="this.classList.toggle('open')">
+                <div class="tweet-main">
+                    <div class="profile-box"></div>
+                    <div class="tweet-body">
+                        <div class="tweet-header">
+                            <span class="user-name">HYEONWON</span>
+                            <span class="user-handle">@dev_won · 1h</span>
+                        </div>
+                        <p class="tweet-text">
+                            격자무늬 배경 위에 윈도우 창이 떠 있는 느낌, 어떤가요? <br>
+                            Y2K 감성을 살리기 위해 폰트와 보더 두께를 맞췄습니다.
+                        </p>
+                        <div class="tweet-actions">
+                            <span>💬 8</span> <span>🔄 2</span> <span>❤️ 15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="replies">
+                    <div class="reply-item">
+                        <strong>Guest_A</strong> 와, 이 감성 진짜 독보적이네요!
+                    </div>
+                    <div class="reply-item">
+                        <strong>Guest_B</strong> 댓글창이 튀어나오는 효과가 너무 좋아요.
+                    </div>
+                </div>
+            </article>
+
+            </div>
+    </main>
+</div>
+</body>
+</html>
