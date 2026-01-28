@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - My Room</title>
+    <link rel="stylesheet" href="boardstyle.css">
+       <script src="boardscript.js" defer></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div id="transition-layer">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">🏠</div>
+            <nav class="nav-menu">
+                <div class="nav-item active">ROOMS</div>
+                <div class="nav-item" id="go-trpg">TRPG</div>
+                <div class="nav-item">SCENES</div>
+                <div class="nav-item">STATISTICS</div>
+                <div class="nav-item">MEMBERS</div>
+            </nav>
+            <button class="back-btn" onclick="location.href='../index.html'">EXIT</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="welcome-card">
+                <h1>Welcome back, Paul...</h1>
+                <p>Hello Paul, obviously everything is going well in the house.</p>
+            </header>
+
+            <div class="dashboard-grid">
+                <section class="card ac-card">
+                    <h3>AIR CONDITIONER-01</h3>
+                    <div class="temp-circle">
+                        <span class="temp-value">28°C</span>
+                    </div>
+                    <input type="range" class="temp-slider">
+                </section>
+
+                <section class="card devices-card">
+                    <h3>MY DEVICES</h3>
+                    <div class="device-grid">
+                        <div class="device-item on"><span>SMART TV</span><small>ON</small></div>
+                        <div class="device-item off"><span>FREEZER</span><small>OFF</small></div>
+                        <div class="device-item on"><span>LAMP</span><small>ON</small></div>
+                        <div class="device-item off"><span>OVEN</span><small>OFF</small></div>
+                    </div>
+                </section>
+
+                <section class="card rooms-card">
+                    <h3>MY ROOMS</h3>
+                    <div class="room-tags">
+                        <span class="tag">KITCHEN</span>
+                        <span class="tag">BEDROOM</span>
+                        <span class="tag active">LIVING ROOM</span>
+                        <span class="tag">GARAGE</span>
+                    </div>
+                    <button class="see-all">SEE ALL</button>
+                </section>
+
+                <section class="card security-card">
+                    <h3>FRONT DOOR</h3>
+                    <div class="lock-visual">
+                        <div class="lock-icon">🔒</div>
+                    </div>
+                    <p>TOUCH AND HOLD TO OPEN</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -18,7 +18,7 @@ clickBtn.addEventListener("click", () => {
         ease: "power4.inOut",
         onComplete: () => {
             // 모든 기둥이 다 올라오면 페이지 이동
-            window.location.href = "home/home.html";
+            window.location.href = "board/board.html";
         }
     });
 });
