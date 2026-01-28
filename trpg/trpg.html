@@ -2,38 +2,58 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>TRPG 목록</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRPG LIBRARY.sys</title>
     <link rel="stylesheet" href="trpg.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
 
-<h2>TRPG 선택</h2>
-<button onclick="location.href='../index.html'">← 메인</button>
-<div class="banner-container">
-    <a href="trpg_view.html?id=open">
-        <img src="../images/trpg/open.webp">
-    </a>
-    <a href="trpg_view.html?id=highbuilding">
-        <img src="../images/trpg/highbuilding.jpg">
-    </a>
-    <a href="trpg_view.html?id=remember">
-        <img src="../images/trpg/remeber.webp">
-    </a>
+    <div id="transition-layer">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
 
-    <a href="trpg_view.html?id=love">
-        <img src="../images/trpg/love.webp">
-    </a>
-</div>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="logo">🎲</div>
+            <div class="nav-item active">LIST</div>
+            <div class="nav-item" onclick="location.href='../index.html'">BACK</div>
+        </div>
+
+        <div class="main-content">
+            <div class="window-frame">
+                <div class="window-header">TRPG_COLLECTION.exe</div>
+                <div class="banner-container">
+                    <a href="trpg_view.html?id=open" class="banner-item">
+                        <img src="../images/trpg/open.webp">
+                    </a>
+                    <a href="trpg_view.html?id=highbuilding" class="banner-item">
+                        <img src="../images/trpg/highbuilding.jpg">
+                    </a>
+                    <a href="trpg_view.html?id=remember" class="banner-item">
+                        <img src="../images/trpg/remeber.webp">
+                    </a>
+                    <a href="trpg_view.html?id=love" class="banner-item">
+                        <img src="../images/trpg/love.webp">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <script>
     window.addEventListener("DOMContentLoaded", () => {
-    // 이미 기둥이 차 있는 상태에서 아래로 내려보냄
-    gsap.to(".column", {
-        duration: 0.8,
-        y: "100%", 
-        stagger: 0.1,
-        ease: "power4.inOut"
+        gsap.to(".column", {
+            duration: 0.8,
+            y: "100%", 
+            stagger: 0.1,
+            ease: "power4.inOut"
+        });
     });
-});
 </script>
 </body>
 </html>

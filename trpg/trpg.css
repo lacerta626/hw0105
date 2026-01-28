@@ -1,69 +1,137 @@
-/* 기본 배경 및 폰트 */
-body {
-    font-family: 'Pretendard', sans-serif; /* 좀 더 현대적인 폰트 추천 */
-    text-align: center;
-    background-color: #fce4ec; /* 연한 핑크톤으로 조정 */
-    margin: 0;
-    padding: 50px 0;
+:root {
+    --win-main: #c3bef0;      /* 연보라 */
+    --win-accent: #8a84d6;    /* 진한 보라 */
+    --win-bg: #ffffff;
+    --win-shadow: 8px 8px 0px rgba(195, 190, 240, 0.4);
 }
 
-h2 {
-    color: #444;
-    margin-bottom: 30px;
-    font-size: 24px;
-    letter-spacing: 2px;
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(180deg, #b3d9ff 0%, #d1c9ff 50%, #e1ccff 100%);
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 배경 격자 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+}
+
+.dashboard-container {
+    display: flex;
+    padding: 40px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 사이드바 */
+.sidebar {
+    width: 100px;
+    background: var(--win-bg);
+    border: 3px solid var(--win-main);
+    box-shadow: var(--win-shadow);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    height: fit-content;
+}
+
+.logo { font-size: 30px; text-align: center; margin-bottom: 20px; }
+
+.nav-item {
+    color: var(--win-accent);
+    padding: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-item.active, .nav-item:hover {
+    background: var(--win-main);
+    color: white;
+}
+
+/* 메인 윈도우 프레임 */
+.window-frame {
+    background: var(--win-bg);
+    border: 3px solid var(--win-main);
+    box-shadow: var(--win-shadow);
+    flex-grow: 1;
+}
+
+.window-header {
+    background: var(--win-main);
+    color: white;
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* 배너 컨테이너 */
 .banner-container {
-    max-width: 850px; /* 배너가 너무 퍼지지 않게 적절히 제한 */
-    margin: 0 auto;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 30px; /* 배너 사이 간격을 넓혀서 시원하게 배치 */
-    padding: 0 20px;
+    gap: 25px;
+    max-height: 70vh;
+    overflow-y: auto; /* 배너가 많아지면 내부 스크롤 */
 }
 
-/* 배너를 감싸는 링크(a) 태그 스타일 */
-.banner-container a {
+/* 배너 아이템 (이미지 강조) */
+.banner-item {
     display: block;
+    border: 2px solid var(--win-main);
+    padding: 10px;
+    background: white;
+    transition: all 0.3s ease;
     text-decoration: none;
-    background-color: white; /* 사진 주변 흰색 테두리 효과 */
-    padding: 15px; /* 사진과 흰색 테두리 사이의 여백 */
-    border-radius: 4px; /* 살짝만 둥글게 해서 세련된 느낌 */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
-    transition: all 0.3s ease;
 }
 
-/* 이미지 스타일 */
-.banner-container img {
-    display: block;
+.banner-item img {
     width: 100%;
-    height: 240px; /* 가로로 긴 형태 유지 */
+    height: 200px;
     object-fit: cover;
-    border-radius: 2px;
-    filter: brightness(0.95); /* 평소엔 살짝 차분하게 */
-    transition: all 0.3s ease;
+    display: block;
+    filter: grayscale(20%); /* 약간의 레트로 느낌 */
+    transition: 0.3s;
 }
 
-/* 호버 효과 (마우스를 올렸을 때) */
-.banner-container a:hover {
-    transform: translateY(-5px); /* 위로 살짝 떠오름 */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+/* 호버 효과 */
+.banner-item:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0px var(--win-main);
+    border-color: var(--win-accent);
 }
 
-.banner-container a:hover img {
-    filter: brightness(1.1); /* 마우스 올리면 밝게 강조 */
+.banner-item:hover img {
+    filter: grayscale(0%);
 }
 
-/* 버튼 스타일 (덤) */
-button {
-    margin-bottom: 40px;
-    padding: 8px 20px;
-    border: none;
-    background: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    font-size: 14px;
+/* 전환 기둥 */
+#transition-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.column {
+    flex: 1;
+    height: 100%;
+    background: var(--win-main); 
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
