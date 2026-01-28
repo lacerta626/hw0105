@@ -64,7 +64,9 @@ body::before {
     text-align: center;
     filter: drop-shadow(2px 2px 0px var(--win-main)); 
 }
-
+.logo img{
+    width: 100%;
+}
 .nav-item {
     color: var(--win-accent);
     margin: 10px 5px;
