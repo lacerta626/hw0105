@@ -1,0 +1,18 @@
+/* 1. 모든 요소에서 실제 마우스 포인터를 숨깁니다 */
+* {
+    cursor: none !important;
+}
+
+/* 2. GIF가 움직일 커스텀 커서 레이어 */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;       /* GIF 크기에 맞게 조절 */
+    height: 50px;
+    background: url('images/HW.gif') no-repeat center center;
+    background-size: contain;
+    pointer-events: none; /* 커서가 버튼 클릭을 방해하지 않도록 설정 */
+    z-index: 1000000;    /* 최상단 배치 */
+    transform: translate(-5%, -5%); /* 중심점 미세 조정 */
+}
