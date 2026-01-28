@@ -112,33 +112,69 @@ body {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 살짝 그림자 추가로 더 입체감 */
 }
-/* 모바일 반응형 */
+/* 모바일 반응형 고도화 */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+    }
+
+    /* 사이드바를 상단 고정 영역으로 변경하거나 상단에 배치 */
     #sidebar {
         position: relative;
         left: 0;
+        top: 0;
         width: 100%;
-        top: auto;
         height: auto;
-        margin: 10px auto;
-        box-shadow: none;
-        overflow-y: visible;             /* 모바일에서는 스크롤 문제 피하기 */
+        max-height: 300px; /* 아이템 영역 높이 제한 */
+        margin-bottom: 20px;
+        padding: 10px;
+        box-sizing: border-box;
     }
-    
-    #canvas {
-        margin-left: 0;
-        width: 100% !important;
-        height: 60vh;
+
+    /* 아이템들을 가로로 나열하여 스크롤하거나 촘촘하게 배치 */
+    #items-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
     }
-    
+
+    #items-container > div {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+
     .draggable {
         width: 60px;
         height: 60px;
+        padding: 3px;
     }
-    
-    #items-container > div {
-        flex: 0 0 80%;
-        max-width: none;
+
+    /* 캔버스 래퍼 여백 제거 */
+    #canvas-wrapper {
+        margin-left: 0;
+        padding: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* 캔버스가 모바일 가로폭을 넘지 않도록 설정 */
+    #canvas {
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important; /* 비율 유지 */
+        touch-action: none;      /* 캔버스 내 터치 스크롤 방지 (조작성 향상) */
+    }
+
+    #controls {
+        margin: 10px 0;
+    }
+
+    #deleteBtn {
+        width: 100%; /* 삭제 버튼을 누르기 쉽게 크게 만듦 */
+        padding: 12px;
     }
 }
 #deleteBtn {

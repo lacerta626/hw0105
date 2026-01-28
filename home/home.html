@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="homescript.js" defer></script>
 </head>
 <body>
 
@@ -31,19 +32,16 @@
 
 <img id="popupImage" src="../images/love_pink.png">
 
-<script>
-    const clickBtn = document.getElementById("clickBtn");
-    const popupImage = document.getElementById("popupImage");
+<div id="transition-layer">
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+</div>
 
-    clickBtn.addEventListener("click", () => {
-        popupImage.classList.toggle("show");
-    });
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            popupImage.classList.remove("show");
-        }
-    });
-</script>
+
 </body>
 </html>

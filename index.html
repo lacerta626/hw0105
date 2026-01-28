@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="style.css">
+    <script src="indexscript.js" defer></script>
 </head>
 
 <body>
@@ -49,124 +50,18 @@
     <img id="popupImage" src="images/love_pink.png">
 </div>
 
-<script>
-    const clickBtn = document.getElementById("clickBtn");
+<div id="transition-layer">
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+    <div class="column"></div>
+</div>
 
-    const dday = document.getElementById("dday");
-    const loadingBar = document.getElementById('loading-bar');
-    const loadingScreen = document.getElementById('loading-screen');
+<video autoplay muted loop playsinline id="bg-video"> ... </video>
 
-    // CLICK 버튼 누르면 home/home.html로 이동
-clickBtn.addEventListener("click", () => {
-    // 이동하기 전 살짝 클릭 효과를 주거나 바로 이동합니다.
-    window.location.href = "home/home.html";
-});
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    // 2. 디데이 계산
-    const startDate = new Date("2026-01-05");
-    const today = new Date();
-    const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
-    dday.textContent = `DAY ${diffDays}`;
-
-    // 3. 로딩 시뮬레이션 및 초기 대사창 활성화
-    window.addEventListener('load', () => {
-        let width = 0;
-        const interval = setInterval(() => {
-            if (width >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loadingScreen.classList.add('finished');
-                    
-                    // 로딩이 끝나고 캐릭터가 나타날 때 대사창도 보여줌
-                    const b1 = document.getElementById("bubble-1");
-                    const b2 = document.getElementById("bubble-2");
-                    b1.classList.add("show");
-                    b2.classList.add("show");
-
-                    // 5초 뒤에 자동으로 사라지게 설정
-                    setTimeout(() => {
-                        b1.classList.remove("show");
-                        b2.classList.remove("show");
-                    }, 5000);
-
-                }, 500);
-            } else {
-                width += Math.random() * 15;
-                if (width > 100) width = 100;
-                loadingBar.style.width = width + '%';
-            }
-        }, 150);
-    });
-
-    // 4. 캐릭터 대사 로직
-    const scripts1 = ["형 뭐해?", "우리 형 귀엽지?", "형이 좋아", "형 생각"];
-    const scripts2 = ["현아 뭐해?", "우리 현이 귀엽지~", "네가 좋아", "현이 생각"];
-    
-    // 타임아웃을 저장할 변수 (새 클릭 시 이전 타이머 취소용)
-    let timer1, timer2;
-
-    function showMessage(bubbleId, scripts, timerVar) {
-        const bubble = document.getElementById(bubbleId);
-        
-        // 기존에 작동 중인 타이머가 있다면 취소 (클릭 시 사라짐 방지)
-        clearTimeout(timerVar);
-
-        const randomText = scripts[Math.floor(Math.random() * scripts.length)];
-        bubble.innerText = randomText;
-        
-        // 만약 이미 켜져 있었다면 잠시 껐다 켜서 애니메이션 재발생 (선택 사항)
-        bubble.classList.remove("show");
-        void bubble.offsetWidth; // 리플로우 강제 발생
-        bubble.classList.add("show");
-        
-        // 2.5초 뒤에 숨기기
-        return setTimeout(() => {
-            bubble.classList.remove("show");
-        }, 2500);
-    }
-
-    // 클릭 이벤트 연결
-    document.getElementById("char-1").addEventListener("click", () => {
-        timer1 = showMessage("bubble-1", scripts1, timer1);
-    });
-
-    document.getElementById("char-2").addEventListener("click", () => {
-        timer2 = showMessage("bubble-2", scripts2, timer2);
-    });
-    window.addEventListener('load', () => {
-    // 1. 로딩 바 로직 (기존 코드)
-    let width = 0;
-    const interval = setInterval(() => {
-        if (width >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-                loadingScreen.classList.add('finished');
-                
-                // 캐릭터 초기 대사창 (기존 코드)
-                const b1 = document.getElementById("bubble-1");
-                const b2 = document.getElementById("bubble-2");
-                b1.classList.add("show");
-                b2.classList.add("show");
-                setTimeout(() => {
-                    b1.classList.remove("show");
-                    b2.classList.remove("show");
-                }, 5000);
-
-                // --- 추가된 기능: 10초 뒤 버튼 안내창 띄우기 ---
-                setTimeout(() => {
-                    const guideBubble = document.getElementById("btn-guide-bubble");
-                    guideBubble.classList.add("show");
-                }, 6000); // 로딩 종료 후 10초 뒤 (합계 약 11~12초)
-
-            }, 500);
-        } else {
-            width += Math.random() * 15;
-            if (width > 100) width = 100;
-            loadingBar.style.width = width + '%';
-        }
-    }, 150);
-});
-</script>
 
 </body>
 </html>
