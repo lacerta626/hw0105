@@ -211,3 +211,12 @@ if (deleteBtn) {
 }
 
 renderPage(0);
+window.addEventListener("DOMContentLoaded", () => {
+    // 이미 기둥이 차 있는 상태에서 아래로 내려보냄
+    gsap.to(".column", {
+        duration: 0.8,
+        y: "100%", 
+        stagger: 0.1,
+        ease: "power4.inOut"
+    });
+});
