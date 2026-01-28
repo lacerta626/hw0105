@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Yangjin';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_9@1.1/Yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 적용 */
+* {
+    font-family: '양진체', sans-serif;
+}
 :root {
     /* 이미지 기반 파스텔 팔레트 */
     --win-main: #c3bef0;      /* 메인 연보라 (이미지 핵심 컬러) */
@@ -8,7 +19,6 @@
 
 body {
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
     /* 요청하신 세로 방향 파스텔 그라데이션 (위: 하늘색 -> 아래: 연보라) */
     background: linear-gradient(180deg, #b3d9ff 0%, #d1c9ff 50%, #e1ccff 100%);
     overflow: hidden;

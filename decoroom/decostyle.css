@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Yangjin';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_9@1.1/Yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 전체 적용 */
+* {
+    font-family: '양진체', sans-serif;
+}
 /* 기본 배경 및 폰트 */
 body, html {
     margin: 0;
